@@ -1,13 +1,18 @@
-# Akbank_Derinogrenme_Boostcamp
-Bu proje, farklı balık türlerini görüntüleri üzerinden sınıflandırmak için derin öğrenme yöntemleri kullanmaktadır.
-## Balık Sınıflandırma Projesi
-Bu proje, farklı balık türlerini görüntüleri üzerinden sınıflandırmak için derin öğrenme yöntemleri kullanmaktadır. TensorFlow kütüphanesi ile inşa edilen model, çeşitli balık görüntüleri üzerinde eğitilmiş olup, görüntü işleme ve veri ön işleme teknikleri ile desteklenmiştir.
+# Akbank Deep Learning Boostcamp
 
-## Proje İçeriği
-### 1. Kurulum
-Projeyi çalıştırmadan önce, gerekli bağımlılıkların yüklenmesi gerekmektedir. Aşağıdaki adımları izleyerek ortamınızı hazırlayabilirsiniz:
+## 🐟 Fish Classification Project
+This project uses deep learning methods to classify different fish species based on their images.  
+Built with the **TensorFlow** library, the model is trained on various fish images and supported by image processing and data preprocessing techniques.
 
-Gereksinimler
+---
+
+## 📂 Project Contents
+
+### 1. Setup
+Before running the project, you need to install the required dependencies. Follow the steps below to set up your environment:
+
+**Requirements**
+```bash
 tensorflow==2.16.1
 numpy
 pandas
@@ -17,46 +22,70 @@ seaborn
 scikit-learn
 h5py
 keras
-### 2. Veri Seti
-Proje, balık türlerini içeren bir görüntü veri seti üzerinde çalışmaktadır. Veri seti, her bir balık türünü temsil eden çeşitli görüntülerden oluşmaktadır. Görüntüler, eğitim ve test seti olarak ikiye ayrılmıştır.
-Eğitim Seti: Modelin öğrenmesi için kullanılan görüntüler.
-Test Seti: Modelin doğruluğunu ölçmek için kullanılan görüntüler.
 
-### 3. Veri Ön İşleme
-Görüntü verileri, modelin eğitilmesi için çeşitli adımlardan geçirilmiştir:
+### 2. Dataset
+The project works on an image dataset containing various fish species.  
+The dataset consists of images representing each fish species and is split into:
 
-Yeniden Boyutlandırma: Tüm görüntüler belirli bir boyuta (örneğin 224x224 piksel) yeniden boyutlandırılır.
-Normalizasyon: Görüntülerin piksel değerleri 0 ile 1 arasında normalize edilir.
-Augmentation: Eğitim sırasında modeli daha dayanıklı hale getirmek için veri artırma teknikleri (döndürme, kırpma, yatay-dikey çevirme) uygulanır.
+- **Training Set**: Images used for the model to learn.  
+- **Test Set**: Images used to measure the model’s accuracy.
+
+---
+
+### 3. Data Preprocessing
+The image data undergoes several preprocessing steps before training the model:
+
+- **Resizing**: All images are resized to a specific size (e.g., 224x224 pixels).  
+- **Normalization**: Pixel values are normalized to a range between 0 and 1.  
+- **Augmentation**: Data augmentation techniques (rotation, cropping, horizontal and vertical flipping) are applied during training to make the model more robust.
+
+---
+
 ### 4. Model
-Projenin ana bileşeni olan model, bir derin öğrenme modelidir ve TensorFlow ile geliştirilmiştir. Aşağıdaki yapıya sahiptir:
+The core component of the project is a deep learning model developed with TensorFlow, structured as follows:
 
-Giriş Katmanı (Input Layer): 224x224x3 boyutunda bir görüntü alır.
-Convolutional Katmanlar (Conv Layers): Görüntüdeki özellikleri öğrenir.
-MaxPooling Katmanları: Özellik haritalarını küçültür.
-Dense Katmanlar: Tam bağlantılı katmanlar modelin sınıflandırma yapmasını sağlar.
-Dropout: Overfitting'i önlemek için bazı nöronlar eğitim sırasında rastgele kapatılır.
-Softmax Çıkış Katmanı: Sonuçta balık türlerinin olasılıklarını hesaplar.
-### 5. Eğitim (Training)
-Model, veri seti üzerinde eğitim adımlarından geçirilir. Eğitim sırasında:
+- **Input Layer**: Accepts an image of size 224x224x3.  
+- **Convolutional Layers**: Learn features from the images.  
+- **MaxPooling Layers**: Reduce the size of feature maps.  
+- **Dense Layers**: Fully connected layers for classification.  
+- **Dropout**: Randomly drops some neurons during training to prevent overfitting.  
+- **Softmax Output Layer**: Calculates the probabilities for each fish species.
 
-Kayıp Fonksiyonu (Loss Function): Kategorik çapraz entropi kullanılır.
-Optimizasyon Algoritması (Optimizer): Adam optimizer kullanılır.
-Değerlendirme Metrikleri (Metrics): Modelin doğruluğunu ölçmek için doğruluk (accuracy) metriği kullanılır.
+---
 
-### 6. Değerlendirme ve Sonuçlar
-Eğitim tamamlandıktan sonra model test verileri üzerinde değerlendirilir. Aşağıdaki metrikler hesaplanır:
+### 5. Training
+The model is trained on the dataset with the following settings:
 
-Doğruluk (Accuracy): Modelin sınıflandırma doğruluğunu ölçer.
-Kayıp (Loss): Eğitim ve doğrulama kayıpları incelenir.
-Sonuçları görselleştirmek için matplotlib kullanılarak grafikler oluşturulur
-### 7. Model Kaydetme
-Model eğitildikten sonra .h5 formatında kaydedilir ve ileride tekrar kullanılabilir.
+- **Loss Function**: Categorical Cross-Entropy  
+- **Optimizer**: Adam  
+- **Metrics**: Accuracy
 
-### 9. GPU Kullanımı
-Model, GPU'yu destekleyecek şekilde yapılandırılmıştır. Eğer bir GPU kullanıyorsanız, TensorFlow otomatik olarak GPU'yu kullanacaktır. Aksi takdirde CPU ile çalışacaktır.
-### Lisans
-Bu proje MIT Lisansı altında lisanslanmıştır. 
+---
+
+### 6. Evaluation and Results
+After training, the model is evaluated on the test data. The following metrics are calculated:
+
+- **Accuracy**: Measures the classification accuracy of the model.  
+- **Loss**: Training and validation losses are analyzed.
+
+The results are visualized with **matplotlib** graphs.
+
+---
+
+### 7. Saving the Model
+Once trained, the model is saved in `.h5` format for future use.
+
+---
+
+### 8. GPU Usage
+The model is configured to support GPU usage.  
+If a GPU is available, TensorFlow will automatically use it; otherwise, it will run on CPU.
+
+---
+
+## 📜 License
+This project is licensed under the **MIT License**.
+
 
 ## Kaggle link
 https://www.kaggle.com/code/feyzaavc/fish-classification
