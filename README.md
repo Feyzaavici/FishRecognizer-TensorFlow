@@ -22,67 +22,73 @@ seaborn
 scikit-learn
 h5py
 keras
-
-2. Dataset
-The project works on an image dataset containing various fish species.
+```
+---
+### 2. Dataset
+The project works on an image dataset containing various fish species.  
 The dataset consists of images representing each fish species and is split into:
 
-Training Set: Images used for the model to learn.
+- **Training Set**: Images used for the model to learn.  
+- **Test Set**: Images used to measure the model’s accuracy.
 
-Test Set: Images used to measure the model’s accuracy.
+---
 
-3. Data Preprocessing
-The image data undergoes several preprocessing steps before training the model:
+### 3. Data Preprocessing
+Before training the model, the image data is processed through several steps:
 
-Resizing: All images are resized to a specific size (e.g., 224x224 pixels).
+- **Resizing**: All images are resized to a fixed size (e.g., 224x224 pixels).  
+- **Normalization**: Pixel values are normalized to a range between 0 and 1.  
+- **Augmentation**: Data augmentation techniques (rotation, cropping, horizontal/vertical flipping) are applied during training to make the model more robust.
 
-Normalization: Pixel values are normalized to a range between 0 and 1.
+---
 
-Augmentation: Data augmentation techniques (rotation, cropping, horizontal and vertical flipping) are applied during training to make the model more robust.
+### 4. Model
+The core component of the project is a deep learning model developed with TensorFlow.  
+The architecture includes:
 
-4. Model
-The core component of the project is a deep learning model developed with TensorFlow, structured as follows:
+- **Input Layer**: Accepts images of size 224x224x3.  
+- **Convolutional Layers**: Learn features from the images.  
+- **MaxPooling Layers**: Reduce the size of the feature maps.  
+- **Dense Layers**: Fully connected layers for classification.  
+- **Dropout**: Randomly disables some neurons during training to prevent overfitting.  
+- **Softmax Output Layer**: Calculates the probability for each fish species.
 
-Input Layer: Accepts an image of size 224x224x3.
 
-Convolutional Layers: Learn features from the images.
-
-MaxPooling Layers: Reduce the size of feature maps.
-
-Dense Layers: Fully connected layers for classification.
-
-Dropout: Randomly drops some neurons during training to prevent overfitting.
-
-Softmax Output Layer: Calculates the probabilities for each fish species.
-
-5. Training
+### 5. Training
 The model is trained on the dataset with the following settings:
 
-Loss Function: Categorical Cross-Entropy
+- **Loss Function**: Categorical Cross-Entropy  
+- **Optimizer**: Adam  
+- **Metrics**: Accuracy
 
-Optimizer: Adam
+---
 
-Metrics: Accuracy
+### 6. Evaluation and Results
+After training, the model is evaluated on the test data.  
+The following metrics are calculated:
 
-6. Evaluation and Results
-After training, the model is evaluated on the test data. The following metrics are calculated:
+- **Accuracy**: Measures the model’s classification performance.  
+- **Loss**: Training and validation loss values are examined.  
 
-Accuracy: Measures the classification accuracy of the model.
+The results are visualized using **matplotlib** graphs.
 
-Loss: Training and validation losses are analyzed.
+---
 
-The results are visualized with matplotlib graphs.
+### 7. Saving the Model
+After training, the model is saved in `.h5` format for future use.
 
-7. Saving the Model
-Once trained, the model is saved in .h5 format for future use.
+---
 
-8. GPU Usage
-The model is configured to support GPU usage.
+### 8. GPU Usage
+The model is configured to support GPU usage.  
 If a GPU is available, TensorFlow will automatically use it; otherwise, it will run on CPU.
 
-📜 License
-This project is licensed under the MIT License.
+---
 
+## 📜 License
+This project is licensed under the **MIT License**.
+
+--- 
 ## Kaggle link
 https://www.kaggle.com/code/feyzaavc/fish-classification
 
